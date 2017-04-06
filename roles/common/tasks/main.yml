@@ -5,6 +5,10 @@
 - name: install epel-repo rpm
   yum: name=epel-release state=installed
   when: ansible_os_family == 'RedHat'
+  
+- name: Install libselinux-python
+  yum: name=libselinux-python state=latest
+  when: ansible_os_family == 'RedHat'
 
 - name: install common packages debian/ubuntu
   apt: pkg={{ item }} state=latest
